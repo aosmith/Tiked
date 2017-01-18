@@ -1,0 +1,6 @@
+package tiked;
+	message message {
+    	required string cmd = 1;
+    	required string target = 2 [default="*"];
+     	optional string args = 3;
+  	}

@@ -1,0 +1,9 @@
+C:\Users\PC\Desktop\LoginPromt\PromtC#\Promt\bin\Release\Promt.exe.config
+C:\Users\PC\Desktop\LoginPromt\PromtC#\Promt\bin\Release\Promt.exe
+C:\Users\PC\Desktop\LoginPromt\PromtC#\Promt\bin\Release\Promt.pdb
+C:\Users\PC\Desktop\LoginPromt\PromtC#\Promt\obj\Release\Promt.csprojResolveAssemblyReference.cache
+C:\Users\PC\Desktop\LoginPromt\PromtC#\Promt\obj\Release\Promt.Form1.resources
+C:\Users\PC\Desktop\LoginPromt\PromtC#\Promt\obj\Release\Promt.Properties.Resources.resources
+C:\Users\PC\Desktop\LoginPromt\PromtC#\Promt\obj\Release\Promt.csproj.GenerateResource.Cache
+C:\Users\PC\Desktop\LoginPromt\PromtC#\Promt\obj\Release\Promt.exe
+C:\Users\PC\Desktop\LoginPromt\PromtC#\Promt\obj\Release\Promt.pdb

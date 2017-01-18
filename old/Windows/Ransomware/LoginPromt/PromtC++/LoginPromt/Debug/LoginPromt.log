@@ -1,0 +1,3 @@
+﻿  MyForm.cpp
+c:\users\pc\desktop\loginpromt\promtc++\loginpromt\MyForm.h(48): error C3149: 'System::String': cannot use this type here without a top-level '^'
+c:\users\pc\desktop\loginpromt\promtc++\loginpromt\MyForm.h(113): error C3350: 'System::EventHandler': a delegate constructor expects 1 argument(s)

