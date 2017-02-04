@@ -53,12 +53,12 @@ Multi-client remote administration tool targeting windows systems.
 - [X] Mobile app
 - [ ] **DLL inyection**
 - [ ] **Encript communication client-server**
-- [ ] Interactive shell with single target
+- [X] Interactive shell with single target
 - [ ] Send mail to contacs
 - [X] Add icon
 - [X] Bind with legitimate executable
 - [X] Improve hiding
-- [ ] Add secondary prosses that ensures primary program stays runing in case of user closing it
+- [X] Add secondary prosses that ensures primary program stays runing in case of user closing it
 - [ ] Add proxy for the client side
 - [ ] RSA client-server communication (per-user keypair + signature verification)
 - [ ] Change to Protocol Buffers
