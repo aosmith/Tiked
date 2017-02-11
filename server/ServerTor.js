@@ -16,7 +16,7 @@ net.createServer(function (socket) {
   socket.name = socket.remoteAddress + ":" + socket.remotePort;
   clients.push(socket);
   socket.on('data', function (data) {
-    var arr = data.toString().split("|");
+      var arr = data.toString().split("").split("|");
     //Procces data recived using message prefix
     switch(arr[0]) {
       case "user":

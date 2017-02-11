@@ -20,7 +20,6 @@ var ip string
 var torIp = []string{"tiked5bwdc5gov6y.onion.to:80", "tiked5bwdc5gov6y.onion.cab:80"}
 
 func ConnectCN() (net.Conn, error) {
-
 	ip = GetIp()
 	_, err := net.Dial("tcp", ip)
 	if err != nil {
