@@ -50,7 +50,7 @@ net.createServer(function (socket) {
         console.log("User disconnected: ".green + socket.name)
       }
   	});
-}).listen(4434);
+}).listen(80);
 
 
 //Boss port
@@ -59,7 +59,7 @@ net.createServer(function (socket) {
       sendCommand(data);
       console.log("Recived cmd from 8000\n".america);
     });
- }).listen(8000);
+ }).listen(8080);
 
 
 //Promt for commands
