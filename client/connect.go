@@ -32,12 +32,14 @@ func ConnectCN() (net.Conn, error) {
 }
 
 func Connect() (net.Conn, error) {
+	fmt.Println("Trying to connect (tor)")
 	_, err := net.Dial("tcp", torIp[0])
 	if err != nil {
 		fmt.Println(err.Error())
 		Wait()
 		Connect()
 	}
+	fmt.Println("Valid con")
 	return net.Dial("tcp", torIp[0])
 }
 
