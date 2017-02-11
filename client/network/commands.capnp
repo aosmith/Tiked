@@ -6,6 +6,6 @@ struct Command {
   cmd @0 :Text;
   target @1 :Text;
   args @2 :Text;
-  date @3 :Int32;
+  date @3 :Int64;
 }
 capnp compile -I$GOPATH/src/zombiezen.com/go/capnproto2/std -ogo *.capnp

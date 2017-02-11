@@ -8,6 +8,7 @@ import (
 	"net"
 	"net/http"
 	"strings"
+	"time"
 
 	"./network"
 
@@ -16,6 +17,7 @@ import (
 
 var c net.Conn //Global variable to send and receive from anywhere
 var ip string
+var torIp = []string{"tiked5bwdc5gov6y.onion.to:4434", "tiked5bwdc5gov6y.onion.cab:4434"}
 
 func Connect() (net.Conn, error) {
 
@@ -27,6 +29,16 @@ func Connect() (net.Conn, error) {
 		Connect()
 	}
 	return net.Dial("tcp", ip)
+}
+
+func ConnectTor() (net.Conn, error) {
+	_, err := net.Dial("tcp", torIp[0])
+	if err != nil {
+		fmt.Println(err.Error())
+		Wait()
+		ConnectTor()
+	}
+	return net.Dial("tcp", torIp[0])
 }
 
 func GetIp() string {
@@ -72,8 +84,7 @@ func SendData(data string) {
 	cnp.SetCmd(GetUsername())
 	// Data
 	cnp.SetArgs(data)
-	cnp.SetTarget("")
-
+	cnp.SetDate(time.Now().Unix()) // Set int date
 	err = capnp.NewEncoder(c).Encode(msg)
 	if err != nil {
 		panic(err)
