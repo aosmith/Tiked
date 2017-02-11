@@ -68,9 +68,9 @@ net.createServer(function (socket) {
     socket.on('end', function () {
    		clients.splice(clients.indexOf(socket), 1);
       if (socket.nick != null) {
-        console.log("User disconnected: ".green + socket.nick)
+          console.log("User disconnected: ".green + socket.nick);
       } else {
-        console.log("User disconnected: ".green + socket.name)
+          console.log("User disconnected: ".green + socket.name);
       }
   	});
 }).listen(4434);

