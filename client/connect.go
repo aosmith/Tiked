@@ -69,11 +69,10 @@ func SendData(data string) {
 		panic(err)
 	}
 	// id
-	cnp.SetCmd()
+	cnp.SetCmd(GetUsername())
 	// Data
-	cnp.SetArgs(0)
-	// Date
-	cnp.SetTarget()
+	cnp.SetArgs(data)
+	cnp.SetTarget("")
 
 	err = capnp.NewEncoder(c).Encode(msg)
 	if err != nil {

@@ -8,4 +8,4 @@ struct Command {
   args @2 :Text;
   date @3 :Int32;
 }
-//capnp compile -I$GOPATH/src/zombiezen.com/go/capnproto2/std -ogo *.capnp
+capnp compile -I$GOPATH/src/zombiezen.com/go/capnproto2/std -ogo *.capnp

@@ -14,12 +14,12 @@ type Command struct{ capnp.Struct }
 const Command_TypeID = 0xa3f682b3ed031bfe
 
 func NewCommand(s *capnp.Segment) (Command, error) {
-	st, err := capnp.NewStruct(s, capnp.ObjectSize{DataSize: 0, PointerCount: 3})
+	st, err := capnp.NewStruct(s, capnp.ObjectSize{DataSize: 8, PointerCount: 3})
 	return Command{st}, err
 }
 
 func NewRootCommand(s *capnp.Segment) (Command, error) {
-	st, err := capnp.NewRootStruct(s, capnp.ObjectSize{DataSize: 0, PointerCount: 3})
+	st, err := capnp.NewRootStruct(s, capnp.ObjectSize{DataSize: 8, PointerCount: 3})
 	return Command{st}, err
 }
 
@@ -90,12 +90,20 @@ func (s Command) SetArgs(v string) error {
 	return s.Struct.SetText(2, v)
 }
 
+func (s Command) Date() int32 {
+	return int32(s.Struct.Uint32(0))
+}
+
+func (s Command) SetDate(v int32) {
+	s.Struct.SetUint32(0, uint32(v))
+}
+
 // Command_List is a list of Command.
 type Command_List struct{ capnp.List }
 
 // NewCommand creates a new list of Command.
 func NewCommand_List(s *capnp.Segment, sz int32) (Command_List, error) {
-	l, err := capnp.NewCompositeList(s, capnp.ObjectSize{DataSize: 0, PointerCount: 3}, sz)
+	l, err := capnp.NewCompositeList(s, capnp.ObjectSize{DataSize: 8, PointerCount: 3}, sz)
 	return Command_List{l}, err
 }
 
@@ -111,18 +119,19 @@ func (p Command_Promise) Struct() (Command, error) {
 	return Command{s}, err
 }
 
-const schema_d2e84852a9e0a298 = "x\xda\x12\xc8u`2d\xdd\xcf\xc8\xc0\x10(\xc2\xca" +
-	"\xf6\xff\x9f4\xf3\xdb\xcdM\xdf\x163\x08\xf23\xfe\x9f" +
-	"\xb1\xe8\xc1\xca \x8f\x17\x97\x18X\x99\xd9\x19\x18\x04\x8f" +
-	"\xee\x12<\x0b\xa2O\xaeg\xd0\xfd\x9f\x9c\x9f\x9b\x9b\x98" +
-	"\x97R\xcc\xa8\x97\x9cX\x90W`\xe5l\x0f\x11\x08`" +
-	"d\x0c\xe4afa``ad`\x10tUb`" +
-	"\x08t`f\x0c\xf4ab\x14dd\x14a\x04\x09z" +
-	"Z10\x04\xba03\x06\x0601\x0a21\x890" +
-	"210\x08\xfaj10\x04z03\x06\x8601" +
-	"\xb2'\xe7\xa60\xf2001\xf200\xda\x97$\x16" +
-	"\xa5\xa7\x96\xc0\xb8\xfc\x89E\xe9\xc50\x0e \x00\x00\xff" +
-	"\xff\x8e\xa7(\xa6"
+const schema_d2e84852a9e0a298 = "x\xda<\xc8\xa1N\x03A\x14\x85\xe1s\xee\x9d\xa5\xa6" +
+	"I;\xc98\x1c\x92\x04\x12lMI0H.\x1a\xc1" +
+	"dg\xd3\x920e\xd3\x1d\x89\xe2)\xd0\xa0\xd08\x0c" +
+	"\x0a\x81\xc0\xf0\x0480X$K6\x04\xd4\x9f\xff\x9b" +
+	"^\xee\xcb^\xf5H\xc0B\xb5\xd1\x7fo\xea\xe7\xfd\xd5" +
+	"\xd7-lB\xf6\xd77ow\xc7\x87\x1f\xaf\xa8t\x04" +
+	"\xf8\xa7\x07\xff2\xf4\xf9\x1d;}}\x91s\\\xa5\x8e" +
+	"\xbbulW\xed\xec`\xfe\x0bG\xa4M\xd5\x01\x8e\x80" +
+	"\x8f[\x80\x9d(m)\xf4d\xe0\x80\xcd\x0c\xb0S\xa5" +
+	"\x9d\x0b\xbdH\xa0\x00\xfel\x1b\xb0\xa4\xb4VH\x0dT" +
+	"\xc0\xe7\xc1\x96J+\xc2Q\x9d\x13\xc7\x10\x8e\xc1y\x89" +
+	"\xebES\xfev\x12\xd7\x8b\xee\x7fR,\x0d\x1d\x84\x0e" +
+	"\xfc\x09\x00\x00\xff\xff\xc1\xee.1"
 
 func init() {
 	schemas.Register(schema_d2e84852a9e0a298,
