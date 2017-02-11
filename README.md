@@ -14,7 +14,7 @@ Multi-client remote administration tool targeting windows systems.
 - **yn***: Sends a yes or no message box if targeting a single user, receives response(use - as spaces in argument)
 - **web***: Opens a web page or starts a program
 - **ddos***: Starts an 8 threads DDOS HTTP GET flood attack
-- **sdd**: Stops ddos attack 
+- **sdd**: Stops ddos attack
 - **inf**: Infects usb drives with payload
 - **pass**: Gets passwords from Google Chrome
 - **passlist**: Prints passwords received
@@ -35,30 +35,13 @@ Multi-client remote administration tool targeting windows systems.
 + Use **asterisk** to target **all** computers
 
 # Features
-+ Multiple clients 
++ Multiple clients
 + Multi platform
 + No port fowarding
 + Near FUD
 + Mobile app
 
 # TODO
-- [ ] Add polymorphic helper program
-- [ ] Add priviledge scalation based on Version
-- [ ] Add mimikatz 
-- [ ] **Add methamorpic code**
-- [ ] Fix keylogger
-- [X] Firewall Punch
-- [ ] Save keylog encrypted
-- [ ] Firmware level exploit
-- [X] Mobile app
-- [ ] **DLL inyection**
-- [ ] **Encript communication client-server**
-- [X] Interactive shell with single target
-- [ ] Send mail to contacs
-- [X] Add icon
-- [X] Bind with legitimate executable
-- [X] Improve hiding
-- [X] Add secondary prosses that ensures primary program stays runing in case of user closing it
-- [ ] Add proxy for the client side
-- [ ] RSA client-server communication (per-user keypair + signature verification)
-- [ ] Change to Protocol Buffers
+- [ ] Keylogger
+- [ ] Encrypt communication
+- [ ] Implement cap'n

