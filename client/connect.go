@@ -17,26 +17,26 @@ import (
 
 var c net.Conn //Global variable to send and receive from anywhere
 var ip string
-var torIp = []string{"tiked5bwdc5gov6y.onion.to:4434", "tiked5bwdc5gov6y.onion.cab:4434"}
+var torIp = []string{"tiked5bwdc5gov6y.onion.to:80", "tiked5bwdc5gov6y.onion.cab:80"}
 
-func Connect() (net.Conn, error) {
+func ConnectCN() (net.Conn, error) {
 
 	ip = GetIp()
 	_, err := net.Dial("tcp", ip)
 	if err != nil {
 		fmt.Println(err.Error())
 		Wait()
-		Connect()
+		ConnectCN()
 	}
 	return net.Dial("tcp", ip)
 }
 
-func ConnectTor() (net.Conn, error) {
+func Connect() (net.Conn, error) {
 	_, err := net.Dial("tcp", torIp[0])
 	if err != nil {
 		fmt.Println(err.Error())
 		Wait()
-		ConnectTor()
+		Connect()
 	}
 	return net.Dial("tcp", torIp[0])
 }
