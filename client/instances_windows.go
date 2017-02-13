@@ -10,7 +10,7 @@ func CheckMultiInstances() {
 	_, err := gow32.CreateMutex("Windows_Security")
 	if err != nil {
 		// TODO start in wait mode
-		Run("msg * Running")
+		//Run("msg * Running")
 		os.Exit(0)
 
 	}
