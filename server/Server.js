@@ -78,11 +78,15 @@ net.createServer(function (socket) {
 
 //Boss port
 net.createServer(function (socket) {
-    socket.write(clients.name);
     socket.on('data', function (data) {
       sendCommand(data);
       console.log("Recived cmd from 8000\n".america);
-    });
+      clients.forEach(function (client) {
+          if (client.nick !== "undefined") {
+              socket.write(client.nick + " \n");
+          }
+        });
+         });
  }).listen(8000);
 
 

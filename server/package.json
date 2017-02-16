@@ -8,15 +8,14 @@
     "better-pastebin": "^0.2.1",
     "chromedriver": "^2.24.1",
     "colors": "^1.1.2",
-    "crypto-js": "^3.1.6",
-    "ngrok": "^2.2.2",
-    "sqlite3": "^3.1.4"},
+    "ngrok": "^2.2.6"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
+  "author": "Anon",
   "license": "ISC",
   "private": true
 }
