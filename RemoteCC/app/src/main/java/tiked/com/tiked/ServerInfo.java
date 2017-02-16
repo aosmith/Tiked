@@ -1,10 +1,17 @@
 package tiked.com.tiked;
 
+import android.content.Context;
+import android.os.Vibrator;
+
 public class ServerInfo {
     static String target = "*";
     static String cmd = "";
     static String args = "";
+    static Vibrator v;
 
+    public static void setV(Vibrator v) {
+        ServerInfo.v = v;
+    }
     public void setArgs(String args) {
         ServerInfo.args = args.replaceAll("\\s+","");
     }

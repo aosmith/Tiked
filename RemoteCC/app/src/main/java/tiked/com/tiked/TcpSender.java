@@ -1,6 +1,8 @@
 package tiked.com.tiked;
 
+import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Vibrator;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -60,6 +62,8 @@ public class TcpSender extends AsyncTask<ServerInfo, Void, Void> {
             OutputStream out = socket.getOutputStream();
             out.write(ServerInfo.getCommand().getBytes());
             socket.close();
+            ServerInfo.v.vibrate(100);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

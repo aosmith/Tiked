@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TikedWear</string>
-    <string name="hello_round">send Round World!</string>
-    <string name="hello_square">send Square World!</string>
-    <string name="send_sample">send sample</string>
+
+    <string name="app_name">MessageApiDemo</string>
     <string name="btn_toast">Send Toast</string>
+
 </resources>

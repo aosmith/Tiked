@@ -13,6 +13,8 @@ import android.widget.Switch;
 
 import com.google.android.gms.wearable.MessageEvent;
 
+import static tiked.com.tiked.ServerInfo.v;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         cmdt = (EditText) findViewById(R.id.cmdt);
         trgt = (EditText) findViewById(R.id.trgt);
         sw = (Switch) findViewById(R.id.switch1);
+
+        ServerInfo.setV((Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE));
     }
 
 
@@ -44,11 +48,9 @@ public class MainActivity extends AppCompatActivity {
     //Generic sender
     void send(ServerInfo data) {
         //Vibrate
-        Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
         // Vibrate for 500 milliseconds
 
         if (swState) {
-            v.vibrate(500);
             new TcpSender().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, data);
             new TcpSender().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, data);
             new TcpSender().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, data);
@@ -60,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
             new TcpSender().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, data);
             new TcpSender().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, data);
         } else {
-            v.vibrate(100);
             new TcpSender().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, data);
 
         }

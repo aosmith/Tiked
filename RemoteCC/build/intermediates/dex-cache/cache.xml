@@ -1,2 +1,293 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_94b53647a9a5687675f4fe2ddff8ebce4b9ef48c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_9b88b31ff187380da329ea87621cf3788583984d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.4.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="618485fef3ebe12127f7622abbc9b5b39057b5c2">
+        <dex dex="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-9.4.0_977f5aece112c501207fdbe1914ecdffd5b619c3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.2.1_c49b50a5c15360198c20d83983d395d8129369df/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.1_a02caccaefb08f2612e5d5735df8661529d364da/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="4356e230a981d1bbf047d848b91bc0d9b7c5bacc">
+        <dex dex="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-23.0.1_b96dd02256a21b18c92ead9b8e0d32cff84e4639/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.6.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="eccaaa9ffa6bb4bfbd2e870f01aaf69655d353be">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-9.6.1_7f69293c961c62196381fcf8c61187758541d96e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.2.1_a4f3e2574f5894cde236e88f6a460e65f3329f9a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.4.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="8a36d229011e75f0caef408e1adf0d3fd4d94e02">
+        <dex dex="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tasks-9.4.0_a54f83c6ec7d7b248eb000c25ad24b723bb435c2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="f5c6596a09b442b3a3a10dc1b5240ce82e549be3">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_c94d1b2fb3591dc3e8cc03f0f41f5e0e84e2130a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.4.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="3dee4ce5844d39d843d503fb8fe04e51e5bfffac">
+        <dex dex="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-9.4.0_85c8d614ee936f47c91385fed5a17248bacd5eea/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_7d7e2bf319691d69b1b51784829617538ddc80e6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.1_f13a47c857cb41278c33721b31278e7e85c1f3fc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_1049ed416fea90a2be5775d860e8bb25d1b1b585/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.0.1_5af2e755b8a1bffcb703bba4219a55e671058f4b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_98ffe390cb47b8915198e3aae7dab3894397c5cd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/9.4.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="b1acf13f1b7d8232af78a30833f9a966d1394c84">
+        <dex dex="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-wearable-9.4.0_32b670ad9e2c2bf6187c1d891221562a30722db3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.6.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="4a36600281a648769411ef642c331851732bf29e">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tasks-9.6.1_a714d65d820cd8e6823e532074901ee1a154a72f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_72a2c337540bcf11a4dd471b1b06c460d3812a09/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="b2cbfbc4c571256b5e0ac68c91c668174efcdad4">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_0ed68f619300fedd0e6e0470b88ab8f287480f29/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha2/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="87fb797ba434e0847cfcca4ffd740941c41634e6">
+        <dex dex="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.support-wearable-2.0.0-alpha2_79aa66c10e17f125026a7e5b158e457bcd9bfad8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.0.1_60fd537dea6911865b204cfc13f71cd777b3265f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-24.2.1_c24e056a6f790afef666917fe7f471fa64bceea3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_c9bff239ab42d268bcbae9767f95303d253015f5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="72d6a6b6c62ef7576f1568e13d52c92ed4cdc327">
+        <dex dex="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_251573021fadf2693b8b213df1dfec741066cb6d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="5a49b47336726c8423a537df095128d961bf7fe2">
+        <dex dex="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_b6e9320683d548e9b1c7c4bdee662b8312e15ceb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/Users/mac/tiked/RemoteCC/tikedwear/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.0.1_47c2cb1d030fe59780ce01046a2a48167134339e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.2.1_b9a59c9d822d38eebce2a18ddcf9dea961ddedbb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/9.6.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="c4394d46152165cd3256fb711ac94f66a28fbae1">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-wearable-9.6.1_7d3ef0db16dafc9a78f80695680ff7d8f0c1aed6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.6.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="af7582c6b327449c6d32518e6a10307860b7b5d6">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-9.6.1_752ac685841399ea3c6586b56f87aaa3214f9ab7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_7212c8502787bdf506dd121ba0f4cb9c86629ceb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/tiked/RemoteCC/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/Users/mac/tiked/RemoteCC/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.2.1_7324993cf3375098c57b2791ede78cd76149e188/classes.dex" />
+    </item>
+
+</items>
