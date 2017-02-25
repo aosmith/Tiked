@@ -6,4 +6,3 @@ EXPOSE 4434
 EXPOSE 8000
 ADD * /root/
 RUN npm install
-

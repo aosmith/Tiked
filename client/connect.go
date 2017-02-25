@@ -1,15 +1,15 @@
 package main
 
 import (
+	"./network"
 	"bufio"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"net"
 	"net/http"
 	"strings"
 	"time"
-
-	"./network"
 
 	"zombiezen.com/go/capnproto2"
 )
@@ -21,6 +21,7 @@ func Connect() (net.Conn, error) {
 	ip = GetIp()
 	_, err := net.Dial("tcp", ip)
 	if err != nil {
+		fmt.Println("error")
 		Wait(160)
 		Connect()
 	}

@@ -1,0 +1,6 @@
+package ticked;
+message Data {
+    required string command = 1;
+    required string target = 2;
+    required string arguments = 3;
+}

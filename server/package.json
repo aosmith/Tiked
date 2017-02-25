@@ -6,8 +6,8 @@
   "dependencies": {
     "base-64": "^0.1.0",
     "better-pastebin": "^0.2.1",
-    "chromedriver": "^2.24.1",
     "colors": "^1.1.2",
+    "log-timestamp": "^0.1.2",
     "ngrok": "^2.2.6"
   },
   "devDependencies": {},
