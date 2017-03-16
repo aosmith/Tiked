@@ -45,3 +45,4 @@ Multi-client remote administration tool targeting windows systems.
 - [ ] Keylogger
 - [ ] Encrypt communication
 - [ ] Implement cap'n
+- [ ] Decrypt stub and run from memory
