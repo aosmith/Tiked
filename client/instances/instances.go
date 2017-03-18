@@ -1,0 +1,5 @@
+package instances
+
+func CheckMultiInstances() {
+
+}
