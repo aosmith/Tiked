@@ -6,3 +6,5 @@ EXPOSE 4434
 EXPOSE 8000
 ADD * /root/
 RUN npm install
+# run with -it
+# tikedzh6cg5unkrf.onion

