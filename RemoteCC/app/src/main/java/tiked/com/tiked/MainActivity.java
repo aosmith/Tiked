@@ -103,27 +103,9 @@ public class MainActivity extends AppCompatActivity {
         data.setCmd("web");
         send(data);
     }
-    public void pornhub(View view) {
-        ServerInfo data = new ServerInfo();
-        data.setArgs("http://pornhub.com");
-        data.setCmd("web");
-        send(data);
-    }
-    public void redtube(View view) {
-        ServerInfo data = new ServerInfo();
-        data.setArgs("http://redtube.com");
-        data.setCmd("web");
-        send(data);
-    }
     public void YtBtn(View view) {
         ServerInfo data = new ServerInfo();
         data.setArgs("http://www.youtube.com");
-        data.setCmd("web");
-        send(data);
-    }
-    public void franYtBtn(View view) {
-        ServerInfo data = new ServerInfo();
-        data.setArgs("http://www.youtube.com/channel/UCX6leuPdVe1hTdR6gGEzRfw");
         data.setCmd("web");
         send(data);
     }
