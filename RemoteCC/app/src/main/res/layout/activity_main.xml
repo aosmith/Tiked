@@ -66,25 +66,6 @@
         android:layout_above="@+id/button5"
         android:layout_alignParentStart="true" />
 
-
-    <Button
-        android:id="@+id/button11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="pornhub"
-        android:text="pornhub"
-        android:layout_below="@+id/button12"
-        android:layout_alignStart="@+id/button9" />
-
-    <Button
-        android:id="@+id/button12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="redtube"
-        android:text="Redtube"
-        android:layout_below="@+id/button4"
-        android:layout_alignStart="@+id/button11" />
-
     <EditText
         android:id="@+id/trgt"
         android:layout_width="wrap_content"
@@ -166,16 +147,6 @@
         android:onClick="YtBtn"
         android:id="@+id/button9"
         android:layout_below="@+id/button11"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HookersLaughs"
-        android:id="@+id/button10"
-        android:onClick="franYtBtn"
-        android:layout_below="@+id/button9"
         android:layout_alignParentStart="true" />
 
     <Switch
